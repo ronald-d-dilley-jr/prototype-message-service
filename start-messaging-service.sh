@@ -1,1 +1,0 @@
-docker run --rm --detach --hostname proto-message-service --name proto-message-service  --env RABBITMQ_DEFAULT_USER=$RABBITMQ_DEFAULT_USER --env RABBITMQ_DEFAULT_PASS=$RABBITMQ_DEFAULT_PASS --publish 8081:15672 --publish 5672:5672 rabbitmq:3.7.2-management-alpine
