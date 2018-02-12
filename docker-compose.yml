@@ -2,9 +2,13 @@ version: '3.4'
 
 services:
   rabbit:
+    #image: 'losrlcmp02.cr.usgs.gov:5000/rabbitmq_tls'
     image: 'rabbitmq:3.7.3-management-alpine'
-    ports: [ '5671-5672:5671-5672', '8081-8082:15671-15672' ]
+    ports: [ '5671:5671', '15671:15671' ]
     volumes:
       - './enabled_plugins:/etc/rabbitmq/enabled_plugins:ro'
       - './rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro'
+      - './rabbit_certs/current-ca.crt:/etc/rabbitmq/certs/current-ca.crt:ro'
+      - './rabbit_certs/current-cert.crt:/etc/rabbitmq/certs/current-cert.crt:ro'
+      - './rabbit_certs/current-cert.key:/etc/rabbitmq/certs/current-cert.key:ro'
     hostname: proto-message-service
